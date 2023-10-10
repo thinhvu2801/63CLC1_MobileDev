@@ -4,68 +4,92 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    EditText dk_soA;
+    EditText dk_soB;
+    EditText dk_KQ;
+    Button cong, tru, nhan, chia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TimDieuKhien();
     }
-    void xuLiCong (View view) {
+    void TimDieuKhien(){
+         dk_soA = (EditText) findViewById(R.id.num1);
+         dk_soB = (EditText) findViewById(R.id.num2);
+         dk_KQ= (EditText) findViewById(R.id.HienThiKQ);
+        cong = (Button) findViewById(R.id.btnCong);
+        tru = (Button) findViewById(R.id.btnTru);
+        nhan = (Button) findViewById(R.id.btnNhan);
+        chia = (Button) findViewById(R.id.btnChia);
+    }
+    public void xuLiCong (View view) {
         //lấy 2 số A , B
-        EditText dk_soA = (EditText) findViewById(R.id.num1);
-        int soA=Integer.parseInt(dk_soA.getText().toString());
-        EditText dk_soB = (EditText) findViewById(R.id.num2);
-        int soB=Integer.parseInt(dk_soA.getText().toString());
+        String soA = dk_soA.getText().toString();
+        String soB = dk_soB.getText().toString();
+
+        float sot1 = Float.parseFloat(soA);
+        float sot2 = Float.parseFloat(soB);
+
         //Xử lí
-        int kQua= soA+soB;
+        float Tong= sot1+sot2;
         //In
-        TextView dk_KQ= (TextView) findViewById(R.id.HienThiKQ);
-        dk_KQ.setText(String.valueOf(kQua));
+        String kQua = String.valueOf(Tong);
+        dk_KQ.setText(kQua);
     }
-    void xuLiTru(View view) {
+    public void xuLiTru(View view) {
         // Lấy 2 số A , B
-        EditText dk_soA = (EditText) findViewById(R.id.num1);
-        int soA = Integer.parseInt(dk_soA.getText().toString());
-        EditText dk_soB = (EditText) findViewById(R.id.num2);
-        int soB = Integer.parseInt(dk_soB.getText().toString());
+        String soA = dk_soA.getText().toString();
+        String soB = dk_soB.getText().toString();
+
+        float sot1 = Float.parseFloat(soA);
+        float sot2 = Float.parseFloat(soB);
+
         // Xử lí
-        int kQua = soA - soB;
+        float Hieu = sot1 - sot2;
         // In
-        TextView dk_KQ = (TextView) findViewById(R.id.HienThiKQ);
-        dk_KQ.setText(String.valueOf(kQua));
+        String kQua = String.valueOf(Hieu);
+        dk_KQ.setText(kQua);
     }
-    void xuLiNhan(View view) {
+
+    public void xuLiNhan(View view) {
         // Lấy 2 số A , B
-        EditText dk_soA = (EditText) findViewById(R.id.num1);
-        int soA = Integer.parseInt(dk_soA.getText().toString());
-        EditText dk_soB = (EditText) findViewById(R.id.num2);
-        int soB = Integer.parseInt(dk_soB.getText().toString());
+        String soA = dk_soA.getText().toString();
+        String soB = dk_soB.getText().toString();
+
+        float sot1 = Float.parseFloat(soA);
+        float sot2 = Float.parseFloat(soB);
+
         // Xử lí
-        int kQua = soA * soB;
+        float Tich = sot1 * sot2;
         // In
-        TextView dk_KQ = (TextView) findViewById(R.id.HienThiKQ);
-        dk_KQ.setText(String.valueOf(kQua));
+        String kQua = String.valueOf(Tich);
+        dk_KQ.setText(kQua);
     }
-    void xuLiChia(View view) {
+
+    public void xuLiChia(View view) {
         // Lấy 2 số A , B
-        EditText dk_soA = (EditText) findViewById(R.id.num1);
-        int soA = Integer.parseInt(dk_soA.getText().toString());
-        EditText dk_soB = (EditText) findViewById(R.id.num2);
-        int soB = Integer.parseInt(dk_soB.getText().toString());
+        String soA = dk_soA.getText().toString();
+        String soB = dk_soB.getText().toString();
+
+        float sot1 = Float.parseFloat(soA);
+        float sot2 = Float.parseFloat(soB);
+
         // Xử lí (Kiểm tra trường hợp chia cho 0)
-        if (soB != 0) {
-            float kQua = (float) soA / soB;
+        if (sot2 != 0) {
+            float Thuong = sot1 / sot2;
             // In
-            TextView dk_KQ = (TextView) findViewById(R.id.HienThiKQ);
-            dk_KQ.setText(String.valueOf(kQua));
+            String kQua = String.valueOf(Thuong);
+            dk_KQ.setText(kQua);
         } else {
-            TextView dk_KQ = (TextView) findViewById(R.id.HienThiKQ);
             dk_KQ.setText("Không thể chia cho 0");
         }
     }
+
 
 }

@@ -1,91 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
     android:orientation="vertical"
-
-
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <EditText
+        android:id="@+id/num1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:paddingTop="30dp">
+        android:hint="Nhập số thứ nhất" />
 
-        <EditText
-            android:id="@+id/num1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="3" />
-
-        <EditText
-            android:id="@+id/num2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="15" />
-    </LinearLayout>
+    <EditText
+        android:id="@+id/num2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập số thứ hai" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:padding="5dp">
-
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/cong"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnCong"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="+"
-            android:onClick="xuLiCong" />
-
+            android:text="+"/>
 
         <Button
-            android:id="@+id/tru"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnTru"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="-"
-            android:onClick="xuLiTru" />
+            android:text="-"/>
+
         <Button
-            android:id="@+id/nhan"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnNhan"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="*"
-            android:onClick="xuLiNhan" />
+            android:text="*"/>
+
         <Button
-            android:id="@+id/chia"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnChia"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="/"
-            android:onClick="xuLiChia" />
+            android:text="/"/>
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/HienThiKQ"
-        android:layout_width="match_parent"
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textColor="#37FF00"
-        android:textSize="30dp"
-        android:textFontWeight="@integer/material_motion_duration_long_2"
-        />
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_horizontal">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Kết quả"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
+        <EditText
+            android:id="@+id/HienThiKQ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:hint="Nơi hiện kết quả" />
+    </LinearLayout>
 </LinearLayout>
-
-
-
-
