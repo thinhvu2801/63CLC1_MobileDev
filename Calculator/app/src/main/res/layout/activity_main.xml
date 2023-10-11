@@ -96,7 +96,7 @@
         android:hint="Ket qua la"
         android:textAlignment="center"
         android:textSize="30sp"
-        app:cornerRadius="3dp" />
+        app:cornerRadius="3dp"/>
     </LinearLayout>
 
 
