@@ -9,87 +9,70 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    EditText dk_soA;
-    EditText dk_soB;
-    EditText dk_KQ;
-    Button cong, tru, nhan, chia;
+
+    EditText edta, edtb;
+    Button btncong, btntru, btnnhan, btnchia;
+    TextView txtdapan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TimDieuKhien();
+        edta = findViewById(R.id.edtsoa);
+        edtb = findViewById(R.id.edtsob);
+        btncong = findViewById(R.id.btncong);
+        btntru = findViewById(R.id.btntru);
+        btnnhan = findViewById(R.id.btnnhan);
+        btnchia = findViewById(R.id.btnchia);
+        txtdapan =findViewById(R.id.txtdapan);
+        String chuoi ="not success!!!!!!!!!!!!!!!!";
+        // xử lý nút cộng
+        btncong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int a = Integer.parseInt(edta.getText().toString());
+                int b = Integer.parseInt(edtb.getText().toString());
+                int c = a + b;
+                txtdapan.setText(String.valueOf(c));
+            }
+        });
+        // xử lý nút trừ
+        btntru.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int a = Integer.parseInt(edta.getText().toString());
+                int b = Integer.parseInt(edtb.getText().toString());
+                int c = a - b;
+                txtdapan.setText(String.valueOf(c));
+
+            }
+        });
+        // xử lý nút nhân
+        btnnhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int a = Integer.parseInt(edta.getText().toString());
+                int b = Integer.parseInt(edtb.getText().toString());
+                int c = a * b;
+                txtdapan.setText(String.valueOf(c));
+
+            }
+        });
+        // xử lý nút chia
+        btnchia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int a = Integer.parseInt(edta.getText().toString());
+                int b = Integer.parseInt(edtb.getText().toString());
+                if(a >= 0 && b> 0){
+                    double c = (double) a / b;
+                    txtdapan.setText(c+"");
+                } else if (b==0) {
+                    txtdapan.setText(chuoi);
+                }
+
+            }
+        });
+
     }
-    void TimDieuKhien(){
-         dk_soA = (EditText) findViewById(R.id.num1);
-         dk_soB = (EditText) findViewById(R.id.num2);
-         dk_KQ= (EditText) findViewById(R.id.HienThiKQ);
-        cong = (Button) findViewById(R.id.btnCong);
-        tru = (Button) findViewById(R.id.btnTru);
-        nhan = (Button) findViewById(R.id.btnNhan);
-        chia = (Button) findViewById(R.id.btnChia);
-    }
-    public void xuLiCong (View view) {
-        //lấy 2 số A , B
-        String soA = dk_soA.getText().toString();
-        String soB = dk_soB.getText().toString();
-
-        float sot1 = Float.parseFloat(soA);
-        float sot2 = Float.parseFloat(soB);
-
-        //Xử lí
-        float Tong= sot1+sot2;
-        //In
-        String kQua = String.valueOf(Tong);
-        dk_KQ.setText(kQua);
-    }
-    public void xuLiTru(View view) {
-        // Lấy 2 số A , B
-        String soA = dk_soA.getText().toString();
-        String soB = dk_soB.getText().toString();
-
-        float sot1 = Float.parseFloat(soA);
-        float sot2 = Float.parseFloat(soB);
-
-        // Xử lí
-        float Hieu = sot1 - sot2;
-        // In
-        String kQua = String.valueOf(Hieu);
-        dk_KQ.setText(kQua);
-    }
-
-    public void xuLiNhan(View view) {
-        // Lấy 2 số A , B
-        String soA = dk_soA.getText().toString();
-        String soB = dk_soB.getText().toString();
-
-        float sot1 = Float.parseFloat(soA);
-        float sot2 = Float.parseFloat(soB);
-
-        // Xử lí
-        float Tich = sot1 * sot2;
-        // In
-        String kQua = String.valueOf(Tich);
-        dk_KQ.setText(kQua);
-    }
-
-    public void xuLiChia(View view) {
-        // Lấy 2 số A , B
-        String soA = dk_soA.getText().toString();
-        String soB = dk_soB.getText().toString();
-
-        float sot1 = Float.parseFloat(soA);
-        float sot2 = Float.parseFloat(soB);
-
-        // Xử lí (Kiểm tra trường hợp chia cho 0)
-        if (sot2 != 0) {
-            float Thuong = sot1 / sot2;
-            // In
-            String kQua = String.valueOf(Thuong);
-            dk_KQ.setText(kQua);
-        } else {
-            dk_KQ.setText("Không thể chia cho 0");
-        }
-    }
-
-
 }
