@@ -22,7 +22,6 @@
         android:id="@+id/textViewCountryName"
         android:layout_width="256dp"
         android:layout_height="47dp"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:text="Tên quốc gia ở đây"
@@ -38,11 +37,12 @@
         android:layout_height="34dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:text="Population: 1000"
+        android:text="Population: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imageViewFlag"
         app:layout_constraintTop_toBottomOf="@+id/textViewCountryName"
-        app:layout_constraintVertical_bias="0.642" />
+        app:layout_constraintVertical_bias="0.642"
+        android:paddingLeft="32dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,7 +65,7 @@ public class CountryArrayAdapter extends BaseAdapter {
         //Set item's data
         Country countryItem = listDataSource.get(i);
         itemViewHolder.countryNameView.setText(countryItem.getCountryName());
-        itemViewHolder.populationView.setText("Population"+countryItem.getCountryName());
+        itemViewHolder.populationView.setText("Population: "+countryItem.getPopulation());
         //img data, need ur own function
         int flagID=getImgIDbyResName(countryItem.getCountryFlag());
         itemViewHolder.flagView.setImageResource(flagID);
