@@ -20,7 +20,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="179dp"
-        app:srcCompat="@android:drawable/ic_delete"
+        app:srcCompat="@mipmap/cute"
         tools:srcCompat="@mipmap/cute" />
 
     <Button
