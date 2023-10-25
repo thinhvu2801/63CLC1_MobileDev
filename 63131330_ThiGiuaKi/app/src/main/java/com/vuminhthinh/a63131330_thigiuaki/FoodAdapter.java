@@ -33,12 +33,7 @@ public class FoodAdapter extends ArrayAdapter<Food> {
         textViewDescription.setText(food.getDescription());
 
         // Thêm sự kiện onClick
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), food.getName() + "\n" + food.getDescription(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        convertView.setOnClickListener(v -> Toast.makeText(getContext(), food.getName() + "\n" + food.getDescription(), Toast.LENGTH_SHORT).show());
 
         return convertView;
     }

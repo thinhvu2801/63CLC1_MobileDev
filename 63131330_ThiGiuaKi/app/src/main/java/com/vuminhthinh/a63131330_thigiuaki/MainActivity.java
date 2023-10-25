@@ -23,33 +23,21 @@ public class MainActivity extends AppCompatActivity {
         buttonCau4 = findViewById(R.id.button4);
 
 
-        buttonCau1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentBai1 = new Intent(MainActivity.this, Bai1Activity.class);
-                startActivity(intentBai1);
-            }
+        buttonCau1.setOnClickListener(view -> {
+            Intent intentBai1 = new Intent(MainActivity.this, Bai1Activity.class);
+            startActivity(intentBai1);
         });
-        buttonCau2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentBai2 = new Intent(MainActivity.this, Bai2Activity.class);
-                startActivity(intentBai2);
-            }
+        buttonCau2.setOnClickListener(view -> {
+            Intent intentBai2 = new Intent(MainActivity.this, Bai2Activity.class);
+            startActivity(intentBai2);
         });
-        buttonCau3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentBai3 = new Intent(MainActivity.this, Bai3Activity.class);
-                startActivity(intentBai3);
-            }
+        buttonCau3.setOnClickListener(view -> {
+            Intent intentBai3 = new Intent(MainActivity.this, Bai3Activity.class);
+            startActivity(intentBai3);
         });
-        buttonCau4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentBai4 = new Intent(MainActivity.this, Bai4Activity.class);
-                startActivity(intentBai4);
-            }
+        buttonCau4.setOnClickListener(view -> {
+            Intent intentBai4 = new Intent(MainActivity.this, Bai4Activity.class);
+            startActivity(intentBai4);
         });
 
     }

@@ -26,23 +26,20 @@ public class Bai4Activity extends AppCompatActivity {
         etSoThich = findViewById(R.id.etSoThich);
         btnXacNhan = findViewById(R.id.btnXacNhan);
 
-        btnXacNhan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String ten = etTen.getText().toString();
-                String lop = etLop.getText().toString();
-                int tuoi = Integer.parseInt(etTuoi.getText().toString());
-                String ngaySinh = etNgaySinh.getText().toString();
-                String soThich = etSoThich.getText().toString();
+        btnXacNhan.setOnClickListener(v -> {
+            String ten = etTen.getText().toString();
+            String lop = etLop.getText().toString();
+            int tuoi = Integer.parseInt(etTuoi.getText().toString());
+            String ngaySinh = etNgaySinh.getText().toString();
+            String soThich = etSoThich.getText().toString();
 
-                Intent intent = new Intent(Bai4Activity.this, HienThiThongTinActivity.class);
-                intent.putExtra("ten", ten);
-                intent.putExtra("lop", lop);
-                intent.putExtra("tuoi", tuoi);
-                intent.putExtra("ngaySinh", ngaySinh);
-                intent.putExtra("soThich", soThich);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(Bai4Activity.this, HienThiThongTinActivity.class);
+            intent.putExtra("ten", ten);
+            intent.putExtra("lop", lop);
+            intent.putExtra("tuoi", tuoi);
+            intent.putExtra("ngaySinh", ngaySinh);
+            intent.putExtra("soThich", soThich);
+            startActivity(intent);
         });
     }
 }
