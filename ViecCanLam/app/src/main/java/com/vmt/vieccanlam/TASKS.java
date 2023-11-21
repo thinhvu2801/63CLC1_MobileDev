@@ -3,20 +3,22 @@ package com.vmt.vieccanlam;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class TASK implements Serializable {
+public class TASKS implements Serializable {
     String name;
-    String date;
+    Long date; // Thay đổi từ String sang Long
     String message;
     String priority;
-    public TASK(String name, String date, String message, String priority) {
+
+    public TASKS(String name, Long date, String message, String priority) {
         this.name = name;
         this.date = date;
         this.message = message;
         this.priority = priority;
     }
 
-    public TASK() {
+    public TASKS() {
     }
+
     public String getName() {
         return name;
     }
@@ -25,11 +27,11 @@ public class TASK implements Serializable {
         this.name = name;
     }
 
-    public String getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Long date) {
         this.date = date;
     }
 
@@ -49,15 +51,12 @@ public class TASK implements Serializable {
         this.priority = priority;
     }
 
-    public HashMap<String,String> toFirebaseObject(){
-        HashMap<String,String> taskObject = new HashMap<String,String>();
-        taskObject.put("name",name);
-        taskObject.put("date",date);
-        taskObject.put("message",message);
-        taskObject.put("priority",priority);
+    public HashMap<String, Object> toFirebaseObject() {
+        HashMap<String, Object> taskObject = new HashMap<>();
+        taskObject.put("name", name);
+        taskObject.put("date", date);
+        taskObject.put("message", message);
+        taskObject.put("priority", priority);
         return taskObject;
-
-
     }
-
 }

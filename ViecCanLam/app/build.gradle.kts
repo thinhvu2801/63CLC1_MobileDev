@@ -7,7 +7,6 @@ android {
     namespace = "com.vmt.vieccanlam"
     compileSdk = 34
 
-
     defaultConfig {
         applicationId = "com.vmt.vieccanlam"
         minSdk = 24
