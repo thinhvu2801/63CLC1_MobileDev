@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "121772181740",
+    "project_id": "loginauthfirebase-25c3a",
+    "storage_bucket": "loginauthfirebase-25c3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121772181740:android:380151d41ab8d4b3563dc9",
+        "android_client_info": {
+          "package_name": "com.vmt.loginauthfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlhOqx00wvftEh_T3qp0QNwVCxAgvHxTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
