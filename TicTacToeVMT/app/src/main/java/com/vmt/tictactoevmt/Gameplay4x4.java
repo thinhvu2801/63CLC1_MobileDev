@@ -4,15 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class GameplayTTT extends AppCompatActivity implements View.OnClickListener {
+public class Gameplay4x4 extends AppCompatActivity implements View.OnClickListener {
 
     TextView playerOneScore, playerTwoScore, playerStatus;
-    Button[] buttons = new Button[16];
+    Button[] buttons = new Button[9];
     Button resetGame;
     Button quitButton;
     int playerOneScoreCount, playerTwoScoreCount, roundCount;
@@ -21,18 +20,19 @@ public class GameplayTTT extends AppCompatActivity implements View.OnClickListen
     //    empty = 0
     //    player 1 = 1
     //    player 2 = 2
-    int[] gameState = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-    int[][] winPosition = {
-            {0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11}, {12, 13, 14, 15}, //row
-            {0, 4, 8, 12}, {1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, //collum
-            {0, 5, 10, 15}, {3, 6, 9, 12} //cross
-    };
+                //    int[] gameState = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                //
+                //    int[][] winPosition = {
+                //            {0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11}, {12, 13, 14, 15}, //row
+                //            {0, 4, 8, 12}, {1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, //collum
+                //            {0, 5, 10, 15}, {3, 6, 9, 12} //cross
+                //    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gameplay_ttt);
+        setContentView(R.layout.activity_gameplay4x4);
+
         playerOneScore = findViewById(R.id.playerScore1);
         playerTwoScore = findViewById(R.id.playerScore2);
         playerStatus = findViewById(R.id.playerStatus);
@@ -43,7 +43,7 @@ public class GameplayTTT extends AppCompatActivity implements View.OnClickListen
         quitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GameplayTTT.this, MainActivity.class);
+                Intent intent = new Intent(Gameplay4x4.this, SelectMap.class);
                 startActivity(intent);
             }
         });
