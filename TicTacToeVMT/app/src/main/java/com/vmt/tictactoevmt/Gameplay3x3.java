@@ -115,10 +115,13 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
                 playerOneScoreCount = 0;
                 playerTwoScoreCount = 0;
                 playerStatus.setText("");
+                playerOneScore.setText(Integer.toString(0));
+                playerTwoScore.setText(Integer.toString(0));
                 updatePlayerScore();
 
             }
         });
+
     }
 
     public boolean checkWinner() {
@@ -143,7 +146,7 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
         activePlayer=true;
 
         for (int i = 0; i < buttons.length; i++) {
-            gameState[i]=0;
+            gameState[i]=2;
             buttons[i].setText("");
         }
     }
