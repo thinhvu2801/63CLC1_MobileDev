@@ -33,7 +33,7 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gameplay3x3);
+        setContentView(R.layout.activity_gameplay4x4);
 
         playerOneScore = findViewById(R.id.playerScore1);
         playerTwoScore = findViewById(R.id.playerScore2);
@@ -141,12 +141,13 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
         playerOneScore.setText(Integer.toString(playerOneScoreCount));
         playerTwoScore.setText(Integer.toString(playerTwoScoreCount));
     }
-    public void playAgain(){
-        roundCount=0;
-        activePlayer=true;
+
+    public void playAgain() {
+        roundCount = 0;
+        activePlayer = true;
 
         for (int i = 0; i < buttons.length; i++) {
-            gameState[i]=2;
+            gameState[i] = 2;
             buttons[i].setText("");
         }
     }

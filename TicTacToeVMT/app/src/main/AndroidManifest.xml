@@ -16,7 +16,7 @@
             android:name=".Gameplay5x5"
             android:exported="false" />
         <activity
-            android:name=".Gameplay3x3"
+            android:name=".Gameplay4x4"
             android:exported="false" />
         <activity
             android:name=".SelectMap"

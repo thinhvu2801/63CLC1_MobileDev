@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/welcome_pic"
-    tools:context=".Gameplay3x3"
+    tools:context=".Gameplay4x4"
     tools:layout_editor_absoluteX="39dp"
     tools:layout_editor_absoluteY="0dp">
 
@@ -63,7 +63,7 @@
         android:id="@+id/playerStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="winner"
+        android:text=""
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textSize="20sp"

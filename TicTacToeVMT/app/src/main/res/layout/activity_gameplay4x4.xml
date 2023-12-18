@@ -63,7 +63,7 @@
         android:id="@+id/playerStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="winner"
+        android:text=""
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textSize="20sp"
