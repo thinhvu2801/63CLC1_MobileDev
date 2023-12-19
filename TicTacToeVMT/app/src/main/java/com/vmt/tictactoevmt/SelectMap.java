@@ -21,7 +21,7 @@ public class SelectMap extends AppCompatActivity {
         btn_3x3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SelectMap.this, Gameplay4x4.class);
+                Intent intent = new Intent(SelectMap.this, Gameplay3x3.class);
                 startActivity(intent);
             }
         });

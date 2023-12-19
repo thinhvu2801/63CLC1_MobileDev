@@ -33,7 +33,8 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gameplay4x4);
+        setContentView(R.layout.activity_gameplay3x3
+        );
 
         playerOneScore = findViewById(R.id.playerScore1);
         playerTwoScore = findViewById(R.id.playerScore2);
@@ -70,7 +71,7 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
             return;
         }
         String buttonID = v.getResources().getResourceEntryName(v.getId()); //btn_2
-        int gameStatePointer = Integer.parseInt(buttonID.substring(buttonID.length() - 1, buttonID.length())); //2
+        int gameStatePointer = Integer.parseInt(buttonID.substring(buttonID.length() - 1)); //2
         if (activePlayer) {
             ((Button) v).setText("X");
             ((Button) v).setTextColor(Color.parseColor("#FFC34A"));
@@ -132,6 +133,7 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
                     gameState[winPosition[0]] != 2) {
                 winnerResult = true;
 
+                break;
             }
         }
         return winnerResult;
