@@ -63,6 +63,7 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
             public void onClick(View view) {
 
                 startActivity(new Intent(Gameplay3x3.this, SelectMap.class));
+                finish();
             }
         });
     }

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class SelectMap extends AppCompatActivity {
-    Button btn_3x3, btn_4x4, btn_5x5;
+    Button btn_3x3, btn_5x5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

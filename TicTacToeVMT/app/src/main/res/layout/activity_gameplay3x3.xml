@@ -8,9 +8,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/welcome_pic"
     android:orientation="vertical"
-    tools:context=".Gameplay5x5">
+    tools:context=".Gameplay3x3">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="70dp">
@@ -25,7 +25,9 @@
             android:text="P1: 0"
             android:textAlignment="center"
             android:textColor="@android:color/holo_blue_dark"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="0dp" />
 
         <TextView
             android:id="@+id/text_view_p2"
@@ -33,15 +35,15 @@
             android:layout_width="98dp"
             android:layout_height="55dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="-1dp"
             android:background="@drawable/btn_common"
             android:freezesText="true"
             android:text="P2: 0"
             android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <GridLayout
         android:layout_width="wrap_content"
