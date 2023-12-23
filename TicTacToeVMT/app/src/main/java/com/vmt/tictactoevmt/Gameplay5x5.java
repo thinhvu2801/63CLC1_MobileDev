@@ -1,168 +1,209 @@
 package com.vmt.tictactoevmt;
 
-import android.graphics.Color;
+import android.content.Intent;
+import android.os.Handler;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Gameplay5x5 extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView playerOneTextView;
-    private TextView playerTwoTextView;
-    private TextView playerScore1TextView;
-    private TextView playerScore2TextView;
-    private TextView playerStatusTextView;
-    private GridLayout gridLayout;
-    private Button quitButton;
-    private Button resetButton;
+    private int dimention = 5;
+    private Button[][] buttons = new Button[dimention][dimention];
 
-    private Button[][] buttons = new Button[5][5];
-    private boolean currentPlayerIsX = true;
+    private boolean p1Turn = true;
 
-    private int player1Score = 0;
-    private int player2Score = 0;
+    public int p1TotalWins;
+    public int p2TotalWins;
+
+    private int rounder;
+
+    private int p1Points;
+    private int p2Points;
+
+    private TextView p1Score;
+    private TextView p2Score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameplay5x5);
 
-        playerOneTextView = findViewById(R.id.playerOne);
-        playerTwoTextView = findViewById(R.id.playerTwo);
-        playerScore1TextView = findViewById(R.id.playerScore1);
-        playerScore2TextView = findViewById(R.id.playerScore2);
-        playerStatusTextView = findViewById(R.id.playerStatus);
-        quitButton = findViewById(R.id.buttonQuit);
-        resetButton = findViewById(R.id.buttonReset);
+        p1Score = findViewById(R.id.text_view_p1);
+        p2Score = findViewById(R.id.text_view_p2);
 
-        quitButton.setOnClickListener(this);
-        resetButton.setOnClickListener(this);
+        for (int i = 0; i < dimention; i++) {
+            for (int j = 0; j < dimention; j++) {
 
-        createButtons();
-        firstTurn();
-    }
-
-    private void createButtons() {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                String buttonID = "btn_" + i + j;
+                String buttonID = "button_" + i + j;
                 int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
                 buttons[i][j] = findViewById(resID);
                 buttons[i][j].setOnClickListener(this);
             }
         }
+
+        Button reset = findViewById(R.id.reset);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Reset();
+            }
+        });
+
+        Button back = findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Gameplay5x5.this, SelectMap.class));
+                finish();
+            }
+        });
     }
 
-    private void firstTurn() {
-        currentPlayerIsX = true;
-        playerStatusTextView.setText("X turn");
+    private void Reset() {
+
+        p1Points = 0;
+        p2Points = 0;
+        ScoreText();
+        CleanBoard();
     }
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == quitButton.getId()) {
-            finish(); // Close the app
-        } else if (view.getId() == resetButton.getId()) {
-            resetGame();
-        } else {
-            Button button = (Button) view;
-            if (button.getText().toString().equals("")) {
-                if (currentPlayerIsX) {
-                    button.setTextColor(Color.RED);
-                    button.setText("X");
-                    currentPlayerIsX = false;
-                    playerStatusTextView.setText("O turn");
-                    check();
-                } else {
-                    button.setTextColor(Color.BLUE);
-                    button.setText("O");
-                    currentPlayerIsX = true;
-                    playerStatusTextView.setText("X turn");
-                    check();
-                }
-            }
-        }
-    }
 
-    private void check() {
-        // Check win conditions
-        for (int i = 0; i < 5; i++) {
-            if (checkLine(i, 0, i, 1, i, 2, i, 3, i, 4) || checkLine(i,0, i, 1, i, 2, i, 3, i, 4)) {
-                return;
-            }
-        }
-        if (checkLine(0, 0, 1, 1, 2, 2, 3, 3, 4, 4) || checkLine(0, 4, 1, 3, 2, 2, 3, 1, 4, 0)) {
+        if (!((Button) view).getText().toString().equals("")) {
             return;
         }
 
-        // Check Draw
-        boolean draw = true;
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (buttons[i][j].getText().toString().equals("")) {
-                    draw = false;
-                    break;
-                }
-            }
+        if (p1Turn) {
+            ((Button) view).setText("X");
+        } else {
+            ((Button) view).setText("O");
         }
-        if (draw) {
-            draw();
+
+        rounder++;
+
+        if (checkForWin()) {
+            if (p1Turn) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        p1Win();
+                    }
+                },  500);
+            } else {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        p2Win();
+                    }
+                },  500);
+            }
+        } else if (rounder == 25) {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    draw();
+                }
+            },  500);
+        } else {
+            p1Turn = !p1Turn;
         }
     }
 
-    private boolean checkLine(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x5, int y5) {
-        String text1 = buttons[x1][y1].getText().toString();
-        String text2 = buttons[x2][y2].getText().toString();
-        String text3 = buttons[x3][y3].getText().toString();
-        String text4 = buttons[x4][y4].getText().toString();
-        String text5 = buttons[x5][y5].getText().toString();
+    private boolean checkForWin() {
+        String[][] field = new String[dimention][dimention];
 
-        if (!text1.equals("") && text1.equals(text2) && text1.equals(text3) && text1.equals(text4) && text1.equals(text5)) {
-            endGame(text1 + " wins");
-            updateScores(text1);
+        for (int i = 0; i < dimention; i++) {
+            for (int j = 0; j < dimention; j++) {
+                field[i][j] = buttons[i][j].getText().toString();
+            }
+        }
+        for (int i = 0; i < dimention; i++) {
+            if (field[i][0].equals(field[i][1]) &&
+                    field[i][0].equals(field[i][2]) &&
+                    field[i][0].equals(field[i][3]) &&
+                    field[i][0].equals(field[i][4]) &&
+                    !field[i][0].equals("")) {
+                return true;
+            }
+        }
+
+        for (int i = 0; i < dimention; i++) {
+            if (field[0][i].equals(field[1][i]) &&
+                    field[0][i].equals(field[2][i]) &&
+                    field[0][i].equals(field[3][i]) &&
+                    field[0][i].equals(field[4][i]) &&
+                    !field[0][i].equals("")) {
+                return true;
+            }
+        }
+
+        if (field[0][0].equals(field[1][1]) &&
+                field[0][0].equals(field[2][2]) &&
+                field[0][0].equals(field[3][3]) &&
+                field[0][0].equals(field[4][4]) &&
+                !field[0][0].equals("")) {
+            return true;
+        }
+
+        if (field[0][4].equals(field[1][3]) &&
+                field[1][3].equals(field[2][2]) &&
+                field[2][2].equals(field[3][1]) &&
+                field[3][1].equals(field[4][0]) &&
+                !field[0][4].equals("")) {
             return true;
         }
 
         return false;
     }
 
+    private void p1Win() {
+
+        p1Points++;
+        Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
+        p1TotalWins++;
+        ScoreText();
+        CleanBoard();
+    }
+
+    private void p2Win() {
+
+        p2Points++;
+        Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_SHORT).show();
+        p2TotalWins++;
+        ScoreText();
+        CleanBoard();
+    }
+
     private void draw() {
-        endGame("Draw!");
+
+        Toast.makeText(this, "Draw!", Toast.LENGTH_SHORT).show();
+        CleanBoard();
     }
 
-    private void endGame(String message) {
+    private void ScoreText() {
+        p1Score.setText("P1: " + p1Points);
+        p2Score.setText("P2: " + p2Points);
 
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                buttons[i][j].setEnabled(false);
-            }
-        }
-        playerStatusTextView.setText(message);
     }
 
-    private void resetGame() {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+    private void CleanBoard() {
+        for (int i = 0; i < dimention; i++) {
+            for (int j = 0; j < dimention; j++) {
                 buttons[i][j].setText("");
-                buttons[i][j].setEnabled(true);
-                buttons[i][j].setTextColor(Color.BLACK);
             }
         }
-
-        firstTurn();
+        rounder = 0;
+        p1Turn = true;
     }
 
-    private void updateScores(String winner) {
-        if (winner.equals("X")) {
-            player1Score++;
-        } else {
-            player2Score++;
-        }
-        playerScore1TextView.setText(String.valueOf(player1Score));
-        playerScore2TextView.setText(String.valueOf(player2Score));
-    }
 }

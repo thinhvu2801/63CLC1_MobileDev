@@ -12,9 +12,9 @@
         android:id="@+id/button3x3"
         android:layout_width="271dp"
         android:layout_height="78dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="84dp"
         android:background="@drawable/btn_welcome"
-        android:text="3x3"
+        android:text="EASY"
         android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -27,24 +27,9 @@
         android:id="@+id/button5x5"
         android:layout_width="271dp"
         android:layout_height="78dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/btn_welcome"
-        android:text="5x5"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:backgroundTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4x4" />
-
-    <Button
-        android:id="@+id/button4x4"
-        android:layout_width="271dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/btn_welcome"
-        android:text="4x4"
+        android:text="HARD"
         android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -57,11 +42,11 @@
         android:id="@+id/nameGame"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="164dp"
         android:background="@drawable/welcome_design"
         android:fontFamily="cursive"
         android:padding="8dp"
-        android:text="SELECT MAP"
+        android:text="Select difficult"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="50sp"
@@ -69,8 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
