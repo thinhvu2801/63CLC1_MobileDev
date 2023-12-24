@@ -94,30 +94,20 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
         if (checkForWin()) {
             if (p1Turn) {
                 Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+                handler.postDelayed(new Runnable() { //tạo delay trong này
                     @Override
                     public void run() {
                         p1Win();
                     }
-                }, 300);
+                }, 100);
 
             } else {
                 Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        p2Win();
-                    }
-                }, 300);
+                handler.postDelayed(() -> p2Win(), 100);
             }
         } else if (rounder == 9) {
             Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    draw();
-                }
-            }, 300);
+            handler.postDelayed(() -> draw(), 100);
         } else {
             p1Turn = !p1Turn;
         }
@@ -196,6 +186,7 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
         for (int i = 0; i < dimention; i++) {
             for (int j = 0; j < dimention; j++) {
                 buttons[i][j].setText("");
+
             }
         }
         rounder = 0;

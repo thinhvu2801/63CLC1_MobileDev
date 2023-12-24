@@ -91,29 +91,19 @@ public class Gameplay5x5 extends AppCompatActivity implements View.OnClickListen
         if (checkForWin()) {
             if (p1Turn) {
                 Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+                handler.postDelayed(new Runnable() { //tạo delay trong này
                     @Override
                     public void run() {
                         p1Win();
                     }
-                },  500);
+                }, 100);
             } else {
                 Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        p2Win();
-                    }
-                },  500);
+                handler.postDelayed(() -> p2Win(), 100);
             }
         } else if (rounder == 25) {
             Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    draw();
-                }
-            },  500);
+            handler.postDelayed(() -> draw(), 100);
         } else {
             p1Turn = !p1Turn;
         }
