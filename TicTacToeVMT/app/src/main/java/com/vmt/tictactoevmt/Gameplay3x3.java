@@ -16,7 +16,6 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
     private Button[][] buttons = new Button[dimention][dimention];
 
     private boolean p1Turn = true;
-
     public int p1TotalWins;
     public int p2TotalWins;
 
@@ -192,6 +191,4 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
         rounder = 0;
         p1Turn = true;
     }
-
-
 }
