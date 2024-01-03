@@ -24,6 +24,22 @@
         app:layout_constraintTop_toBottomOf="@+id/nameGame" />
 
 
+    <Button
+        android:id="@+id/btnAbout"
+        android:layout_width="184dp"
+        android:layout_height="46dp"
+        android:background="@drawable/btn_welcome"
+        android:text="ABOUT ME"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameGame"
+        app:layout_constraintVertical_bias="0.78" />
+
     <TextView
         android:id="@+id/nameGame"
         android:layout_width="350dp"
