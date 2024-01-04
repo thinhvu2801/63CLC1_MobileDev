@@ -106,6 +106,7 @@
                 android:layout_weight="2"
                 android:gravity="center"
                 android:padding="13dp"
+                android:textColor="@color/white"
                 android:text="User Info"
                 android:textAllCaps="true"
                 android:textSize="25sp"
@@ -142,6 +143,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:layout_marginLeft="20dp"
                         android:text="+84 928460869"
                         android:textSize="15sp" />
@@ -163,6 +165,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:layout_marginLeft="20dp"
                         android:text="minhthinhhero@gmail.com"
                         android:textSize="15sp" />
@@ -184,6 +187,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:layout_marginLeft="20dp"
                         android:text="Nha Trang University"
                         android:textSize="15sp" />

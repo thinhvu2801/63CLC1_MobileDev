@@ -1,6 +1,7 @@
 package com.vmt.tictactoevmt;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Bundle;
 import android.view.View;
@@ -81,7 +82,7 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
         if (!((Button) view).getText().toString().equals("")) {
             return;
         }
-
+        playBeepSound();
         if (p1Turn) {
             ((Button) view).setText("X");
         } else {
@@ -190,5 +191,18 @@ public class Gameplay3x3 extends AppCompatActivity implements View.OnClickListen
         }
         rounder = 0;
         p1Turn = true;
+    }
+
+    private void playBeepSound() {
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.beep_sound);
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+            }
+        });
+
+        mediaPlayer.start();
     }
 }

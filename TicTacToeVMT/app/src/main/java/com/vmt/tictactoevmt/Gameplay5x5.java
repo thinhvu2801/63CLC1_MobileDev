@@ -1,6 +1,7 @@
 package com.vmt.tictactoevmt;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,6 @@ public class Gameplay5x5 extends AppCompatActivity implements View.OnClickListen
     private Button[][] buttons = new Button[dimention][dimention];
 
     private boolean p1Turn = true;
-
     public int p1TotalWins;
     public int p2TotalWins;
 
@@ -79,6 +79,7 @@ public class Gameplay5x5 extends AppCompatActivity implements View.OnClickListen
         if (!((Button) view).getText().toString().equals("")) {
             return;
         }
+        playBeepSound();
 
         if (p1Turn) {
             ((Button) view).setText("X");
@@ -91,12 +92,8 @@ public class Gameplay5x5 extends AppCompatActivity implements View.OnClickListen
         if (checkForWin()) {
             if (p1Turn) {
                 Handler handler = new Handler();
-                handler.postDelayed(new Runnable() { //tạo delay trong này
-                    @Override
-                    public void run() {
-                        p1Win();
-                    }
-                }, 100);
+                //tạo delay trong này
+                handler.postDelayed(() -> p1Win(), 100);
             } else {
                 Handler handler = new Handler();
                 handler.postDelayed(() -> p2Win(), 100);
@@ -196,4 +193,16 @@ public class Gameplay5x5 extends AppCompatActivity implements View.OnClickListen
         p1Turn = true;
     }
 
+    private void playBeepSound() {
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.beep_sound);
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+            }
+        });
+
+        mediaPlayer.start();
+    }
 }
